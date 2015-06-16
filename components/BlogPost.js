@@ -1,5 +1,5 @@
 var React = require("react");
-var BlogModel = require("../models/BlogModel.js")
+//var BlogModel = require("../scripts/models/BlogPostModel.js")
 
 module.exports = React.createClass({
 	render: function(){
@@ -19,13 +19,13 @@ module.exports = React.createClass({
 	},
 	submitPost: function(event){
 		event.preventDefault();
-		var blog = new BlogModel({
-			title: this.refs.blogTitle.getDOMNode().value,
-			text: this.refs.blogBody.getDOMNode().value,
-			category: this.refs.categorySelected.getDOMNode().value,
-			userId: 1,
-			createdAt: new Date()
-		});
-		console.log(blog);
+		// var blog = new BlogModel({
+		// 	title: this.refs.blogTitle.getDOMNode().value,
+		// 	text: this.refs.blogBody.getDOMNode().value,
+		// 	category: this.refs.categorySelected.getDOMNode().value,
+		// 	userId: 1,
+		// 	createdAt: new Date()
+		// });
+		// console.log(blog);
 	}
 });

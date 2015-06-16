@@ -4,28 +4,20 @@ var Backbone = require("backbone");
 Backbone.$ = $;
 var CommentModel = require("../scripts/models/CommentModel.js")
 var CommentCollection = require("../scripts/collections/CommentCollection.js");
-var commentCollection = new CommentCollection();
-var CommentList = require("./CommentForm.js")
+var comments = new CommentCollection([{text: "rawr"},{text: "things"},{text:"more things"}]);
+var CommentList = require("./CommentList.js")
+var people = {}
 module.exports = React.createClass({
 
-	getInitialState: function(){
-		console.log(commentCollection);
-		return {
-			list: commentCollection
-		}
-	},
 	render:function(){
+		console.log(comments)
 		return (
 				<div>
 					<form onSubmit={this.addComment}>
 						<input ref="addedComment" type="text"/>
 						<button>Add Comment</button>
 					</form>
-					{this.state.list.models.map(function(commentModel){
-						return (
-							<CommentList text={commentModel.text}/>
-							);
-					})}
+					<CommentList allComments = {comments}/>
 				</div>
 			);
 	}, 
@@ -34,8 +26,8 @@ module.exports = React.createClass({
 		var commentModel = new CommentModel({
 			text:this.refs.addedComment.getDOMNode().value
 		})
-		commentCollection.add(commentModel);
-		console.log(commentCollection);
+		CommentCollection.add(commentModel);
 	}
 	
 });
+
